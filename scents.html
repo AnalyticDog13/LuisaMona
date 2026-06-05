@@ -3,68 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luisa Monâ — SCENTS</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; background: #F1ECE4; font-family: 'Courier New', Courier, monospace; }
-    #logo { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 10; width: 340px; }
-    .top-btn { position: fixed; top: 32px; z-index: 10; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; cursor: pointer; user-select: none; transform: translateY(-50%); }
-    #menu-btn { left: 32px; display: flex; align-items: center; gap: 7px; }
-    #contact-btn { right: 32px; }
-    .menu-lines { display: inline-flex; flex-direction: column; gap: 3px; }
-    .menu-lines span { display: block; width: 1.1em; height: 0.13em; background: #000; }
-    #sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 20; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    #sidebar-overlay.open { opacity: 1; pointer-events: all; }
-    #sidebar { position: fixed; top: 0; left: 0; right: auto; width: min(400px, 88vw); height: 100%; background: #F1ECE4; z-index: 30; transform: translateX(-101%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; padding: 0 44px; }
-    #sidebar.open { transform: translateX(0%); }
-    #sidebar-top { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; padding-bottom: 48px; }
-    #sidebar-label, #sidebar-label, #sidebar-close { font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; user-select: none; display: inline-block; vertical-align: middle; } #sidebar-close { cursor: pointer; }
-    #sidebar-close { cursor: pointer; }
-    #sidebar-nav { display: flex; flex-direction: column; }
-    #sidebar-nav a { font-family: 'Courier New', Courier, monospace; font-size: clamp(22px, 3.2vw, 38px); font-weight: 900; line-height: 1.35; letter-spacing: 0.03em; color: #000; text-decoration: none; -webkit-text-stroke: 0.5px black; }
-    .sidebar-divider { height: 1px; background: #000; opacity: 0.15; margin: 22px 0; }
-    #page-title { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 0.06em; -webkit-text-stroke: 0.8px black; color: #000; user-select: none; }
-  </style>
+  <title>Luisa Monâ — Scents</title>
+  <link rel="stylesheet" href="lm-styles.css">
 </head>
 <body>
-  <a href="index.html" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;display:block;width:340px;"><img id="logo" src="logo.svg" alt="Luisa Monâ" style="width:100%;display:block;"></a>
-  <div id="menu-btn" class="top-btn">
-    <span class="menu-lines"><span></span><span></span><span></span></span>
-    MENU
+  <div class="page-header">
+    <h1 class="page-title">SCENTS</h1>
+    <p class="page-subtitle">EAU DE PARFUM &amp; HOME</p>
   </div>
-  <div id="contact-btn" class="top-btn">CONTACT</div>
-  <div id="page-title">SCENTS</div>
-  <div id="sidebar-overlay"></div>
-  <div id="sidebar">
-    <div id="sidebar-top">
-      <span id="sidebar-label">MENU</span>
-      <span id="sidebar-close">CLOSE</span>
-    </div>
-    <nav id="sidebar-nav">
-      <a href="men.html">MEN</a>
-      <a href="women.html">WOMEN</a>
-      <a href="kids.html">KIDS</a>
-      <a href="bags.html">BAGS</a>
-      <a href="accessories.html">ACCESSORIES</a>
-      <a href="collections.html">COLLECTIONS</a>
-      <div class="sidebar-divider"></div>
-      <a href="scents.html">SCENTS</a>
-      <a href="furniture.html">FURNITURE</a>
-      <a href="exhibitions.html">EXHIBITIONS</a>
-    </nav>
-  </div>
+  <div class="product-grid col-2" id="product-grid"></div>
+  <footer class="site-footer"><span>LUISA MONÂ</span><span>&copy; 2024</span></footer>
+  <script src="lm-store.js"></script>
+  <script src="lm-ui.js"></script>
   <script>
-    (function () {
-      var menuBtn  = document.getElementById('menu-btn');
-      var sidebar  = document.getElementById('sidebar');
-      var overlay  = document.getElementById('sidebar-overlay');
-      var closeBtn = document.getElementById('sidebar-close');
-      function openSidebar()  { sidebar.classList.add('open');    overlay.classList.add('open'); }
-      function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
-      menuBtn.addEventListener('click', openSidebar);
-      closeBtn.addEventListener('click', closeSidebar);
-      overlay.addEventListener('click', closeSidebar);
-    })();
+    LMPage.renderGrid([
+      { id:'s1', name:'N°01 — CENDRE', price:195,
+        desc:'An ash-forward woody fragrance with vetiver, orris root, and a clean smoke accord. The scent of late autumn in an empty room. Long-lasting sillage.',
+        img:'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=80',
+        sizes:['30ML','50ML','100ML'] },
+      { id:'s2', name:'N°02 — TERRACOTTA', price:195,
+        desc:'Warm, mineral, and slightly animalic. Ambergris, cistus, and dry cedar. An olfactive study in earth and sunlight.',
+        img:'https://images.unsplash.com/photo-1547826039-a8a4e02bc793?auto=format&fit=crop&w=800&q=80',
+        sizes:['30ML','50ML','100ML'] },
+      { id:'s3', name:'N°03 — NOCTURNE', price:210,
+        desc:'Dark florals on a base of black musks. Tuberose, narcissus absolute, ambrette seed. Intimate and unsettling.',
+        img:'https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=800&q=80',
+        sizes:['30ML','50ML','100ML'] },
+      { id:'s4', name:'N°04 — SEL BLANC', price:185,
+        desc:'A coastal mineral fragrance. Ambrette, grey amber, sea salt accord, and driftwood. Clean without sweetness. Unisex.',
+        img:'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=800&q=80',
+        sizes:['30ML','50ML','100ML'] },
+      { id:'s5', name:'MAISON CANDLE — CENDRE', price:95,
+        desc:'N°01 in a hand-poured soy wax candle. Cotton wick. 280g. Approximately 60 hours burn time. Heavy matte glass vessel — refillable on request.',
+        img:'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80',
+        sizes:[] },
+      { id:'s6', name:'ROOM DIFFUSER SET', price:115,
+        desc:'Reed diffuser in three Luisa Monâ scents. 200ml per bottle. Includes 8 rattan reeds. Refills available. Presented in a linen-wrapped box.',
+        img:'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=800&q=80',
+        sizes:[] }
+    ], 'col-2');
   </script>
 </body>
 </html>

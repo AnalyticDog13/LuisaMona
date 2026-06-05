@@ -3,68 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luisa Monâ — KIDS</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; background: #F1ECE4; font-family: 'Courier New', Courier, monospace; }
-    #logo { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 10; width: 340px; }
-    .top-btn { position: fixed; top: 32px; z-index: 10; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; cursor: pointer; user-select: none; transform: translateY(-50%); }
-    #menu-btn { left: 32px; display: flex; align-items: center; gap: 7px; }
-    #contact-btn { right: 32px; }
-    .menu-lines { display: inline-flex; flex-direction: column; gap: 3px; }
-    .menu-lines span { display: block; width: 1.1em; height: 0.13em; background: #000; }
-    #sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 20; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    #sidebar-overlay.open { opacity: 1; pointer-events: all; }
-    #sidebar { position: fixed; top: 0; left: 0; right: auto; width: min(400px, 88vw); height: 100%; background: #F1ECE4; z-index: 30; transform: translateX(-101%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; padding: 0 44px; }
-    #sidebar.open { transform: translateX(0%); }
-    #sidebar-top { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; padding-bottom: 48px; }
-    #sidebar-label, #sidebar-label, #sidebar-close { font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; user-select: none; display: inline-block; vertical-align: middle; } #sidebar-close { cursor: pointer; }
-    #sidebar-close { cursor: pointer; }
-    #sidebar-nav { display: flex; flex-direction: column; }
-    #sidebar-nav a { font-family: 'Courier New', Courier, monospace; font-size: clamp(22px, 3.2vw, 38px); font-weight: 900; line-height: 1.35; letter-spacing: 0.03em; color: #000; text-decoration: none; -webkit-text-stroke: 0.5px black; }
-    .sidebar-divider { height: 1px; background: #000; opacity: 0.15; margin: 22px 0; }
-    #page-title { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 0.06em; -webkit-text-stroke: 0.8px black; color: #000; user-select: none; }
-  </style>
+  <title>Luisa Monâ — Kids</title>
+  <link rel="stylesheet" href="lm-styles.css">
 </head>
 <body>
-  <a href="index.html" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;display:block;width:340px;"><img id="logo" src="logo.svg" alt="Luisa Monâ" style="width:100%;display:block;"></a>
-  <div id="menu-btn" class="top-btn">
-    <span class="menu-lines"><span></span><span></span><span></span></span>
-    MENU
+  <div class="page-header">
+    <h1 class="page-title">KIDS</h1>
+    <p class="page-subtitle">AGES 2 – 12</p>
   </div>
-  <div id="contact-btn" class="top-btn">CONTACT</div>
-  <div id="page-title">KIDS</div>
-  <div id="sidebar-overlay"></div>
-  <div id="sidebar">
-    <div id="sidebar-top">
-      <span id="sidebar-label">MENU</span>
-      <span id="sidebar-close">CLOSE</span>
-    </div>
-    <nav id="sidebar-nav">
-      <a href="men.html">MEN</a>
-      <a href="women.html">WOMEN</a>
-      <a href="kids.html">KIDS</a>
-      <a href="bags.html">BAGS</a>
-      <a href="accessories.html">ACCESSORIES</a>
-      <a href="collections.html">COLLECTIONS</a>
-      <div class="sidebar-divider"></div>
-      <a href="scents.html">SCENTS</a>
-      <a href="furniture.html">FURNITURE</a>
-      <a href="exhibitions.html">EXHIBITIONS</a>
-    </nav>
-  </div>
+  <div class="product-grid" id="product-grid"></div>
+  <footer class="site-footer"><span>LUISA MONÂ</span><span>&copy; 2024</span></footer>
+  <script src="lm-store.js"></script>
+  <script src="lm-ui.js"></script>
   <script>
-    (function () {
-      var menuBtn  = document.getElementById('menu-btn');
-      var sidebar  = document.getElementById('sidebar');
-      var overlay  = document.getElementById('sidebar-overlay');
-      var closeBtn = document.getElementById('sidebar-close');
-      function openSidebar()  { sidebar.classList.add('open');    overlay.classList.add('open'); }
-      function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
-      menuBtn.addEventListener('click', openSidebar);
-      closeBtn.addEventListener('click', closeSidebar);
-      overlay.addEventListener('click', closeSidebar);
-    })();
+    LMPage.renderGrid([
+      { id:'k1', name:'LINEN BLOUSON', price:195,
+        desc:'Relaxed linen blouson in natural ecru. Elasticated cuffs. Two side pockets. Pre-washed for softness. Machine washable.',
+        img:'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=800&q=80',
+        sizes:['2Y','3Y','4Y','5Y','6Y','7Y','8Y'],
+        colors:[{name:'ECRU',hex:'#EDE6DA',light:true},{name:'STONE',hex:'#C4BBAD'},{name:'PINE',hex:'#4A6741'}] },
+      { id:'k2', name:'WIDE CORD TROUSER', price:145,
+        desc:'Wide-leg corduroy trousers in chocolate and stone. Elasticated back waistband. Durable enough for daily use — made to last.',
+        img:'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80',
+        sizes:['2Y','3Y','4Y','5Y','6Y','7Y','8Y'],
+        colors:[{name:'CHOCOLATE',hex:'#5C3317'},{name:'STONE',hex:'#C4BBAD'}] },
+      { id:'k3', name:'COLLARLESS SHIRT DRESS', price:175,
+        desc:'Lightweight cotton collarless shirt dress. A-line cut, drop shoulder. Made from organic cotton. Three buttons at placket.',
+        img:'https://images.unsplash.com/photo-1471286174890-9c112ac6a79a?auto=format&fit=crop&w=800&q=80',
+        sizes:['2Y','4Y','6Y','8Y','10Y','12Y'],
+        colors:[{name:'ECRU',hex:'#EDE6DA',light:true},{name:'SLATE BLUE',hex:'#6B7B8D'},{name:'DUSTY ROSE',hex:'#C9948A'}] },
+      { id:'k4', name:'MERINO ROLL NECK', price:160,
+        desc:'Slim ribbed roll neck in extra-fine merino wool. Machine washable at 30°. Available in ivory, storm grey, and rust.',
+        img:'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80',
+        sizes:['2Y','3Y','4Y','5Y','6Y','7Y','8Y'],
+        colors:[{name:'IVORY',hex:'#F5F0E8',light:true},{name:'STORM',hex:'#6B7B8D'},{name:'RUST',hex:'#B85C38'}] },
+      { id:'k5', name:'CANVAS SNEAKER', price:120,
+        desc:'Unbleached cotton canvas low-top sneaker with natural rubber sole. Durable and washable. Minimal by design.',
+        img:'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80',
+        sizes:['EU 24','EU 26','EU 28','EU 30','EU 32','EU 34'] },
+      { id:'k6', name:'QUILTED OVERSHIRT', price:210,
+        desc:'Lightly quilted overshirt in a fine wool-cotton blend. Button front, two chest pockets. Versatile as a jacket or layering piece.',
+        img:'https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&w=800&q=80',
+        sizes:['2Y','4Y','6Y','8Y','10Y','12Y'] }
+    ]);
   </script>
 </body>
 </html>

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luisa Monâ</title>
+  <link rel="prefetch" href="main.html">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -31,7 +32,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
-      width: 340px;
+      width: 245px;
     }
 
     #logo path {
@@ -40,11 +41,18 @@
       paint-order: stroke fill;
     }
 
-    #contact-btn {
+    #hdr-right-group {
       position: fixed;
       top: 32px;
       right: 32px;
       z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transform: translateY(-50%);
+    }
+
+    #contact-btn {
       font-family: 'Courier New', Courier, monospace;
       font-size: 13px;
       line-height: 1;
@@ -54,7 +62,20 @@
       color: #000;
       cursor: pointer;
       user-select: none;
-      transform: translateY(-50%);
+    }
+
+    .idx-icon {
+      display: flex; align-items: center; cursor: pointer; color: #000;
+      text-decoration: none; position: relative;
+    }
+    .idx-icon svg { width: 18px; height: 18px; }
+    .idx-icon:hover { opacity: 0.6; }
+    #idx-cart-badge {
+      position: absolute; top: -6px; right: -8px;
+      background: #000; color: #F1ECE4; font-size: 8px; font-weight: 900;
+      width: 14px; height: 14px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Courier New', Courier, monospace; opacity: 0; transition: opacity 0.2s;
     }
 
     #menu-btn {
@@ -94,7 +115,7 @@
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.4);
-      z-index: 20;
+      z-index: 150;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
@@ -113,7 +134,7 @@
       width: min(400px, 88vw);
       height: 100%;
       background: #F1ECE4;
-      z-index: 30;
+      z-index: 200;
       transform: translateX(-101%);
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
@@ -166,7 +187,7 @@
     }
 
     #sidebar-nav a:hover {
-      opacity: 1;
+      text-decoration: underline;
     }
 
     .sidebar-divider {
@@ -174,6 +195,94 @@
       background: #000;
       opacity: 0.15;
       margin: 22px 0;
+    }
+
+    #contact-sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: auto;
+      width: min(400px, 88vw);
+      height: 100%;
+      background: #F1ECE4;
+      z-index: 200;
+      transform: translateX(101%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 0 44px;
+    }
+
+    #contact-sidebar.open {
+      transform: translateX(0%);
+    }
+
+    #contact-sidebar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+
+    #contact-sidebar-label, #contact-sidebar-close {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 900;
+      -webkit-text-stroke: 0.4px black;
+      letter-spacing: 0.04em;
+      color: #000;
+      user-select: none;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    #contact-sidebar-close { cursor: pointer; }
+
+    #contact-sidebar-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    #contact-sidebar-body .contact-email {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(14px, 1.8vw, 22px);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      color: #000;
+      text-decoration: none;
+      -webkit-text-stroke: 0.4px black;
+      line-height: 1.4;
+    }
+
+    #contact-sidebar-body .contact-email:hover {
+      opacity: 0.6;
+    }
+
+    #contact-sidebar-body .policy-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: auto;
+      padding-bottom: 48px;
+    }
+
+    #contact-sidebar-body .policy-links a {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(13px, 1.4vw, 18px);
+      font-weight: 900;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      color: #000;
+      text-decoration: none;
+      -webkit-text-stroke: 0.3px black;
+      opacity: 0.55;
+    }
+
+    #contact-sidebar-body .policy-links a:hover {
+      opacity: 1;
     }
 
     #cursor-label::before {
@@ -210,7 +319,7 @@
 <body>
 
   <img id="bg1" class="bg-layer" src="new.gif" alt="">
-  <a href="index.html" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;display:block;width:340px;"><img id="logo" src="logo.svg" alt="Luisa Monâ" style="width:100%;display:block;"></a>
+  <a href="index.html" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;display:block;width:245px;"><img id="logo" src="logo.svg" alt="Luisa Monâ" style="width:100%;display:block;"></a>
 
   <!-- ══ WAVE TRANSITION  ·  delete these two elements + the wave-transition script below to disable ══ -->
   <div id="store" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#F1ECE4;z-index:2;display:none;"></div>
@@ -222,9 +331,38 @@
     MENU
   </div>
 
-  <div id="contact-btn">CONTACT</div>
+  <div id="hdr-right-group">
+    <div id="contact-btn">CONTACT</div>
+    <a href="account.html" class="idx-icon" title="Account">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </a>
+    <a href="cart.html" class="idx-icon" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <span id="idx-cart-badge"></span>
+    </a>
+  </div>
 
   <div id="sidebar-overlay"></div>
+  <div id="contact-sidebar">
+    <div id="contact-sidebar-top">
+      <span id="contact-sidebar-label">CONTACT</span>
+      <span id="contact-sidebar-close">CLOSE</span>
+    </div>
+    <div id="contact-sidebar-body">
+      <a class="contact-email" href="mailto:support@luisamona.com">support@luisamona.com</a>
+      <div class="sidebar-divider" style="margin-top:32px;"></div>
+      <div class="policy-links">
+        <div class="sidebar-divider" style="margin-bottom:18px;"></div>
+        <a href="returns.html">RETURN POLICY &amp; REFUNDS</a>
+        <a href="shipping.html">SHIPPING</a>
+        <a href="faq.html">FREQUENTLY ASKED QUESTIONS</a>
+      </div>
+    </div>
+  </div>
   <div id="sidebar">
     <div id="sidebar-top">
       <span id="sidebar-label">MENU</span>
@@ -312,13 +450,24 @@
         var t  = coverTransform();
         var fs = CELL_H * t.scale;
 
-        /* align MENU + CONTACT vertically with logo center */
+        /* align MENU + right group vertically with logo center */
         var rLogo  = logo.getBoundingClientRect();
         var logoCY = rLogo.top + rLogo.height / 2;
-        contactBtn.style.top      = (logoCY - 15) + 'px';
+        var rightGroup = document.getElementById('hdr-right-group');
+        if (rightGroup) { rightGroup.style.top = (logoCY - 15) + 'px'; rightGroup.style.fontSize = fs + 'px'; }
         contactBtn.style.fontSize = fs + 'px';
         menuBtn.style.top         = (logoCY - 15) + 'px';
         menuBtn.style.fontSize    = fs + 'px';
+
+        /* cart badge */
+        (function() {
+          try {
+            var cart = JSON.parse(localStorage.getItem('lm_cart')) || [];
+            var n = cart.reduce(function(s,i){return s+i.qty;},0);
+            var badge = document.getElementById('idx-cart-badge');
+            if (badge) { badge.textContent = n>0?n:''; badge.style.opacity = n>0?'1':'0'; }
+          } catch(e) {}
+        })();
 
         var s        = snapToGrid(curX, curY);
         var labelW   = CELL_W * 16 * t.scale + 4;   /* "CLICK TO EXPLORE" = 16 chars */
@@ -327,10 +476,12 @@
         var rContact = contactBtn.getBoundingClientRect();
         var rMenu    = menuBtn.getBoundingClientRect();
 
-        var hideForLogo    = nearRect(rLogo,    mouseX, mouseY, 0);
+        var hideForLogo    = mouseX >= rLogo.left && mouseX <= rLogo.right + 120 &&
+                             mouseY >= rLogo.top  && mouseY <= rLogo.bottom;
         var hideForContact = nearRect(rContact, mouseX, mouseY, NEAR_PX);
-        var hideForMenu    = nearRect(rMenu,    mouseX, mouseY, NEAR_PX);
-        var hideForSidebar = sidebar.classList.contains('open');
+        var hideForMenu    = mouseX >= rMenu.left && mouseX <= rMenu.right + 120 &&
+                             mouseY >= rMenu.top - 25 && mouseY <= rMenu.bottom + 25;
+        var hideForSidebar = sidebar.classList.contains('open') || document.getElementById('contact-sidebar').classList.contains('open');
 
         label.style.left     = s.x + 'px';
         label.style.top      = s.y + 'px';
@@ -370,23 +521,35 @@
 
   <script>
     (function () {
-      var menuBtn  = document.getElementById('menu-btn');
-      var sidebar  = document.getElementById('sidebar');
-      var overlay  = document.getElementById('sidebar-overlay');
-      var closeBtn = document.getElementById('sidebar-close');
+      var menuBtn        = document.getElementById('menu-btn');
+      var contactBtn     = document.getElementById('contact-btn');
+      var sidebar        = document.getElementById('sidebar');
+      var contactSidebar = document.getElementById('contact-sidebar');
+      var overlay        = document.getElementById('sidebar-overlay');
+      var closeBtn       = document.getElementById('sidebar-close');
+      var contactClose   = document.getElementById('contact-sidebar-close');
 
-      function openSidebar() {
-        sidebar.classList.add('open');
-        overlay.classList.add('open');
-      }
-      function closeSidebar() {
+      function closeAll() {
         sidebar.classList.remove('open');
+        contactSidebar.classList.remove('open');
         overlay.classList.remove('open');
       }
 
-      menuBtn.addEventListener('click', openSidebar);
-      closeBtn.addEventListener('click', closeSidebar);
-      overlay.addEventListener('click', closeSidebar);
+      menuBtn.addEventListener('click', function () {
+        closeAll();
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+      });
+
+      contactBtn.addEventListener('click', function () {
+        closeAll();
+        contactSidebar.classList.add('open');
+        overlay.classList.add('open');
+      });
+
+      closeBtn.addEventListener('click', closeAll);
+      contactClose.addEventListener('click', closeAll);
+      overlay.addEventListener('click', closeAll);
     })();
   </script>
 
@@ -457,6 +620,7 @@
         /* reveal store page the instant phase 2 begins */
         if (p2 > 0 && !storeUp) {
           store.style.display = 'block';
+          store.style.zIndex = '15';
           storeUp = true;
         }
 
@@ -498,12 +662,8 @@
         if (p1 < 1 || p2 < 1) {
           requestAnimationFrame(drawFrame);
         } else {
-          cvs.style.display           = 'none';
-          bg.style.display            = 'none';
-          label.style.display         = 'none';
-          contact.style.pointerEvents = '';
-          menu.style.pointerEvents    = '';
           done = true;
+          window.location.href = 'main.html';
         }
       }
     })();
@@ -512,3 +672,4 @@
 
 </body>
 </html>
+

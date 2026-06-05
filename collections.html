@@ -3,68 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luisa Monâ — COLLECTIONS</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; background: #F1ECE4; font-family: 'Courier New', Courier, monospace; }
-    #logo { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 10; width: 340px; }
-    .top-btn { position: fixed; top: 32px; z-index: 10; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; cursor: pointer; user-select: none; transform: translateY(-50%); }
-    #menu-btn { left: 32px; display: flex; align-items: center; gap: 7px; }
-    #contact-btn { right: 32px; }
-    .menu-lines { display: inline-flex; flex-direction: column; gap: 3px; }
-    .menu-lines span { display: block; width: 1.1em; height: 0.13em; background: #000; }
-    #sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 20; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    #sidebar-overlay.open { opacity: 1; pointer-events: all; }
-    #sidebar { position: fixed; top: 0; left: 0; right: auto; width: min(400px, 88vw); height: 100%; background: #F1ECE4; z-index: 30; transform: translateX(-101%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; padding: 0 44px; }
-    #sidebar.open { transform: translateX(0%); }
-    #sidebar-top { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; padding-bottom: 48px; }
-    #sidebar-label, #sidebar-label, #sidebar-close { font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1; font-weight: 900; -webkit-text-stroke: 0.4px black; letter-spacing: 0.04em; color: #000; user-select: none; display: inline-block; vertical-align: middle; } #sidebar-close { cursor: pointer; }
-    #sidebar-close { cursor: pointer; }
-    #sidebar-nav { display: flex; flex-direction: column; }
-    #sidebar-nav a { font-family: 'Courier New', Courier, monospace; font-size: clamp(22px, 3.2vw, 38px); font-weight: 900; line-height: 1.35; letter-spacing: 0.03em; color: #000; text-decoration: none; -webkit-text-stroke: 0.5px black; }
-    .sidebar-divider { height: 1px; background: #000; opacity: 0.15; margin: 22px 0; }
-    #page-title { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 0.06em; -webkit-text-stroke: 0.8px black; color: #000; user-select: none; }
-  </style>
+  <title>Luisa Monâ — Collections</title>
+  <link rel="stylesheet" href="lm-styles.css">
 </head>
 <body>
-  <a href="index.html" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;display:block;width:340px;"><img id="logo" src="logo.svg" alt="Luisa Monâ" style="width:100%;display:block;"></a>
-  <div id="menu-btn" class="top-btn">
-    <span class="menu-lines"><span></span><span></span><span></span></span>
-    MENU
+  <div class="page-header">
+    <h1 class="page-title">COLLECTIONS</h1>
+    <p class="page-subtitle">SEASONAL READY-TO-WEAR</p>
   </div>
-  <div id="contact-btn" class="top-btn">CONTACT</div>
-  <div id="page-title">COLLECTIONS</div>
-  <div id="sidebar-overlay"></div>
-  <div id="sidebar">
-    <div id="sidebar-top">
-      <span id="sidebar-label">MENU</span>
-      <span id="sidebar-close">CLOSE</span>
-    </div>
-    <nav id="sidebar-nav">
-      <a href="men.html">MEN</a>
-      <a href="women.html">WOMEN</a>
-      <a href="kids.html">KIDS</a>
-      <a href="bags.html">BAGS</a>
-      <a href="accessories.html">ACCESSORIES</a>
-      <a href="collections.html">COLLECTIONS</a>
-      <div class="sidebar-divider"></div>
-      <a href="scents.html">SCENTS</a>
-      <a href="furniture.html">FURNITURE</a>
-      <a href="exhibitions.html">EXHIBITIONS</a>
-    </nav>
-  </div>
+  <div class="product-grid col-2" id="product-grid"></div>
+  <footer class="site-footer"><span>LUISA MONÂ</span><span>&copy; 2024</span></footer>
+  <script src="lm-store.js"></script>
+  <script src="lm-ui.js"></script>
   <script>
-    (function () {
-      var menuBtn  = document.getElementById('menu-btn');
-      var sidebar  = document.getElementById('sidebar');
-      var overlay  = document.getElementById('sidebar-overlay');
-      var closeBtn = document.getElementById('sidebar-close');
-      function openSidebar()  { sidebar.classList.add('open');    overlay.classList.add('open'); }
-      function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
-      menuBtn.addEventListener('click', openSidebar);
-      closeBtn.addEventListener('click', closeSidebar);
-      overlay.addEventListener('click', closeSidebar);
-    })();
+    LMPage.renderGrid([
+      { id:'c1', name:'AW24 — DISSOLUTION', price:1650, landscape:true,
+        desc:'The autumn/winter 2024 collection explores the deconstruction of formal dress codes. Unlined tailoring, raw hems, and deliberately unfinished seaming. 18 pieces. Shown in Paris, October 2024.',
+        img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
+        meta:'AUTUMN / WINTER 2024',
+        sizes:['XS','S','M','L','XL'] },
+      { id:'c2', name:'SS24 — TERRACOTTA REVERIE', price:1280, landscape:true,
+        desc:'Sun-baked tones and intentionally weathered surfaces. Linen, ramie, and unbleached cotton. The spring/summer 2024 collection is an ode to slow Mediterranean afternoons.',
+        img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+        meta:'SPRING / SUMMER 2024',
+        sizes:['XS','S','M','L','XL'] },
+      { id:'c3', name:'AW23 — NOCTURNE', price:1940, landscape:true,
+        desc:'Heavy wool, dark velvet, and oxidised metals. The AW23 collection is a study in shadows — dramatic proportions, muted palette, and deeply tactile surfaces.',
+        img:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80',
+        meta:'AUTUMN / WINTER 2023',
+        sizes:['XS','S','M','L','XL'] },
+      { id:'c4', name:'SS23 — MINERAL', price:1150, landscape:true,
+        desc:'Chalky whites, stone greys, and bleached naturals. The SS23 collection draws on geological forms — slow, ancient, and without pretension.',
+        img:'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=80',
+        meta:'SPRING / SUMMER 2023',
+        sizes:['XS','S','M','L','XL'] },
+      { id:'c5', name:'AW22 — RESIDUE', price:1380, landscape:true,
+        desc:'The collection that introduced the Luisa Monâ overcoat and the draped shirt. Archive pieces. Limited availability — please contact us directly for stock information.',
+        img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+        meta:'AUTUMN / WINTER 2022 — ARCHIVE',
+        sizes:['XS','S','M','L'] },
+      { id:'c6', name:'SS22 — FIRST LIGHT', price:980, landscape:true,
+        desc:'The inaugural collection. Linen and silk in four tones — chalk, stone, straw, and peat. Simple. Honest. The beginning of a vocabulary.',
+        img:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80',
+        meta:'SPRING / SUMMER 2022 — ARCHIVE',
+        sizes:['XS','S','M','L'] }
+    ], 'col-2');
   </script>
 </body>
 </html>
